@@ -7,13 +7,15 @@ body {
     background: linear-gradient(to bottom left, rgb(255, 222, 37), rgb(255, 25, 75));
     background-repeat: no-repeat;
     background-size: cover;
-}
 
+}
 .pageWrapper {
+    height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center
 }
+
 
 .gameBox {
     width: 350px;
@@ -23,7 +25,6 @@ body {
     justify-content: center;
     align-items: center;
     border: 5px solid rgb(207, 207, 207);
-    margin:5rem;
 }
 
 h1 {
