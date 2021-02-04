@@ -1,46 +1,62 @@
 // Dice game 1 player
-// Get the dices
-
 let dice = document.getElementsByTagName("img");
 let startAgain = document.querySelector("#startAgain")
-let playerStatus = document.querySelector("#playerStatus")
 let displayPoints = document.querySelector("#displayPoints")
+let displayDice = document.querySelector("#displayDice")
 let roll = document.querySelector("#roll")
+let pointsCounter = 0;
 
-
-//1 Roll the dice to begin game - event listener & math random 
+startAgain.style.display = "none";
+displayDice.style.display = "none";
 
 roll.addEventListener("click", (event) => {
-    roll = Math.floor(Math.random()*6) + 1;
-    console.log(roll)
-    //How to get img to nuumber? ah 
-    // if (roll === 1) {
-        
-    // } else if (roll === 2) {
-        
-    // } else if (roll === 3) {
+    play();
+});
 
-    // } else if (roll === 4) {
-
-    // } else if (roll === 5) {
-
-    // } else (roll === 2) {
-
-    // }
+startAgain.addEventListener("click", (event) => { 
+    pointsCounter = 0;
+    play();
+    startAgain.style.display = "none"
+    roll.style.display = "block";
 });
 
 
+function play() {
+    const diceRoll = Math.floor(Math.random()*6) + 1;
+    displayDice.style.display = "block";
 
-//2 The dice appears on the first roll
+    if (diceRoll === 1) {
+        displayDice.src = "img/dice1.png"
+        displayPoints.innerText = "Game over";
+        roll.style.display = "none";
+        startAgain.style.display = "block";     
+    } else if (diceRoll === 2) {
+        displayDice.src = "img/dice2.png"
+        displayPoints.innerText = pointsCounter;
+        pointsCounter += diceRoll;
+    } else if (diceRoll === 3) {
+        displayDice.src = "img/dice3.png"
+        displayPoints.innerText = pointsCounter;
+        pointsCounter += diceRoll;
+    } else if (diceRoll === 4) {
+        displayDice.src = "img/dice4.png"
+        displayPoints.innerText = pointsCounter;
+        pointsCounter += diceRoll;
+    } else if (diceRoll === 5) {
+        displayDice.src = "img/dice5.png"
+        displayPoints.innerText = pointsCounter;
+        pointsCounter += diceRoll;
+    } else  {
+        displayDice.src = "img/dice6.png"
+        displayPoints.innerText = pointsCounter;
+        pointsCounter += diceRoll;
+    }
 
-//3 When a dice is rolled, the score adds up
+    
+    if (pointsCounter >= 20 ){
+        displayPoints.innerText = "You won!";
+        play();
+    }
 
-//4 Once the score passed, 20, you win
-
-//5 However, if you hit ‘1’ then you lose (if less than score of 20)
-
-//6 If the player won or lost, the player can start the game again
-
-//7 You may want to change the score to any number other than 20
-
-
+    console.log(pointsCounter);
+}
